@@ -1,0 +1,1 @@
+url = f"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode={curr}&date={date_str}&json"
