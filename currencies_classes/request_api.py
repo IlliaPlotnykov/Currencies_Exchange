@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import timedelta
 import sys
 sys.path.append("_")
 from config.global_config import *
@@ -11,9 +11,6 @@ class RequestAPI:
         self.start_date = start_date
         self.end_date = end_date
         self.all_data = []
-    # Настройки
-    # start_date = datetime(2025, 5, 1)
-    # end_date = datetime(2025, 5, 3)
 
     def get_data(self):
         current_date = self.start_date
@@ -31,4 +28,5 @@ class RequestAPI:
             current_date += timedelta(days=1)
 
         df = pd.DataFrame(self.all_data)
+        return df
         print(df)
