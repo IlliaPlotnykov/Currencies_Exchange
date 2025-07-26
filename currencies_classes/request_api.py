@@ -12,7 +12,7 @@ class RequestAPI:
         self.end_date = end_date
         self.all_data = []
 
-    def get_data(self):
+    def get_data(self): # Отримуємо дані з Апі по всім валютам з листа
         current_date = self.start_date
         while current_date <= self.end_date:
             date_str = current_date.strftime('%Y%m%d')
@@ -29,4 +29,3 @@ class RequestAPI:
 
         df = pd.DataFrame(self.all_data)
         return df
-        print(df)
