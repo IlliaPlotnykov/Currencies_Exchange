@@ -24,7 +24,7 @@ class RequestAPI:
                     if day_data:
                         self.all_data.append(day_data[0])
                 else:
-                    print(f"Ошибка запроса на {date_str}: {response.status_code}")
+                    print(f"Error {date_str}: {response.status_code}")
             current_date += timedelta(days=1)
 
         df = pd.DataFrame(self.all_data)
