@@ -1,19 +1,13 @@
 class Currencies:
     def __init__(self):
-        self.currencies = {}
+        self.currencies = []
 
     def display_info(self):
         return self.currencies
 
-    def add_curr(self,code,rate):
-        self.currencies[code] = rate
+    def add_curr(self,code):
+        self.currencies.append(code)
 
     def display_curr(self):
-        for code,rate in self.currencies.items():
-            print(f'{code}: {rate}')
-
-
-curr1 = Currencies()
-curr1.add_curr('USD',41)
-curr1.display_curr()
-
+        for code in self.currencies:
+            print(f'{code}')
