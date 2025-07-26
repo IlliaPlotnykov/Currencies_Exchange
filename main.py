@@ -1,11 +1,10 @@
 from datetime import datetime
 from currencies_classes.request_api import RequestAPI
-from file_reader import FileReader as FR
+from currencies_classes.file_writer_excel import FileWriter as FW
 
 start = datetime(2025, 5, 1)
-end = datetime(2025, 5, 3)
+end = datetime(2025, 5, 2)
 
-# requester = RequestAPI(start, end)
-# requester.get_data()
+RA = RequestAPI(start,end).get_data()
 
-RequestAPI(start,end).get_data()
+FileWriter(RA).write_to_excel()

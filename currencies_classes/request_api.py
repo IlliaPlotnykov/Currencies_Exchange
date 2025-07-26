@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import sys
 sys.path.append("_")
 from config.global_config import *
-from file_reader import FileReader as FR
+from currencies_classes.file_reader import FileReader as FR
 
 class RequestAPI:
     def __init__(self, start_date, end_date):
@@ -20,7 +20,7 @@ class RequestAPI:
         while current_date <= self.end_date:
             date_str = current_date.strftime('%Y%m%d')
             for curr in FR.get_currency_list():
-                url = f"{URL}{curr}&date={date_str}&json"
+                url = f"{str(URL)}{str(curr)}&date={date_str}&json"
                 response = requests.get(url=url)
                 if response.status_code == 200:
                     day_data = response.json()
