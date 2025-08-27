@@ -1,6 +1,9 @@
 from datetime import datetime
 from currencies_classes.request_api import RequestAPI
 from currencies_classes.file_writer_excel import FileWriter as FW
+from currencies_classes.file_reader import FileReader as FR
+
+FR.get_currency_list() # Отримуємо потрібні валюти
 
 start = datetime(2025, 5, 1)
 end = datetime(2025, 5, 31)
