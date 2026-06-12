@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# PyCharm
+.idea/
+
+# Virtual environments
+venv/
+.venv/
+
+# Generated Excel results
+*.xlsx
+
+# OS files
+.DS_Store
