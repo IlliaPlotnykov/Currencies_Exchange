@@ -15,7 +15,6 @@ The goal of the project is to practice Data Engineering concepts such as ETL pip
 * PostgreSQL
 * REST API
 * Requests
-* Pytest
 
 ## Features
 
