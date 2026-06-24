@@ -2,3 +2,6 @@ requests
 pandas
 openpyxl
 pytest
+apache-airflow
+psycopg2-binary
+SQLAlchemy
