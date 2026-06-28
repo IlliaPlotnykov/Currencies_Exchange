@@ -1,4 +1,7 @@
 from datetime import datetime, timedelta
+import sys
+
+sys.path.append("/airflow")
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
