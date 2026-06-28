@@ -47,7 +47,7 @@ class PostgresWriter:
                     currency_code,
                     currency_name,
                     rate,
-                    exchange_date
+                    exchange_date::date
                 FROM currency_rates_stg
                 ON CONFLICT (currency_code, exchange_date)
                 DO UPDATE SET
