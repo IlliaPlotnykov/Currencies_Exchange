@@ -26,7 +26,7 @@ class PostgresWriter:
             "exchange_date"
         ]]
 
-        with engine.begin() as conn:
+        with self.engine.begin() as conn:
 
             df.to_sql(
                 name="currency_rates_tmp",

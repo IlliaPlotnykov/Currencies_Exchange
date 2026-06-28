@@ -19,7 +19,7 @@ def load_currency_rates(): #get exchange rates for the current day and loading t
         end_date=today
     ).get_data()
 
-    writer = PostgresWriter(POSTGRES_CONN)
+    writer = PostgresWriter(POSTGRES_CONN_ID)
     writer.write_to_postgres(df)
 
 
