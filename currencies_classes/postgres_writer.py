@@ -29,7 +29,7 @@ class PostgresWriter:
         with self.engine.begin() as conn:
 
             df.to_sql(
-                name="currency_rates_tmp",
+                name="currency_rates_stg",
                 con=conn,
                 if_exists="replace",
                 index=False,
@@ -53,8 +53,4 @@ class PostgresWriter:
                 DO UPDATE SET
                     currency_name = EXCLUDED.currency_name,
                     rate = EXCLUDED.rate;
-            """))
-
-            conn.execute(text("""
-                DROP TABLE IF EXISTS currency_rates_tmp;
             """))
