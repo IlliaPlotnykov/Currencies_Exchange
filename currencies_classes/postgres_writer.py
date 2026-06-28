@@ -1,9 +1,11 @@
-from sqlalchemy import create_engine, text
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+from sqlalchemy import text
 
 
 class PostgresWriter:
-    def __init__(self, connection_string: str):
-        self.engine = create_engine(connection_string)
+    def __init__(self, conn_id: str):
+        self.hook = PostgresHook(postgres_conn_id=conn_id)
+        self.engine = self.hook.get_sqlalchemy_engine()
 
     def write_to_postgres(self, df):
         if df.empty:
@@ -17,9 +19,15 @@ class PostgresWriter:
             "exchangedate": "exchange_date"
         })
 
-        df = df[["currency_code", "currency_name", "rate", "exchange_date"]]
+        df = df[[
+            "currency_code",
+            "currency_name",
+            "rate",
+            "exchange_date"
+        ]]
 
-        with self.engine.begin() as conn:
+        with engine.begin() as conn:
+
             df.to_sql(
                 name="currency_rates_tmp",
                 con=conn,
@@ -47,4 +55,6 @@ class PostgresWriter:
                     rate = EXCLUDED.rate;
             """))
 
-            conn.execute(text("DROP TABLE IF EXISTS currency_rates_tmp;"))
+            conn.execute(text("""
+                DROP TABLE IF EXISTS currency_rates_tmp;
+            """))
