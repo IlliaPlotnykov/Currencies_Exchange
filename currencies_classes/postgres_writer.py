@@ -26,15 +26,15 @@ class PostgresWriter:
             "exchange_date"
         ]]
 
-        with self.engine.begin() as conn:
+        df.to_sql(
+            name="currency_rates_stg",
+            con=self.engine,
+            if_exists="replace",
+            index=False,
+            method="multi"
+        )
 
-            df.to_sql(
-                name="currency_rates_stg",
-                con=conn,
-                if_exists="replace",
-                index=False,
-                method="multi"
-            )
+        with self.engine.begin() as conn:
 
             conn.execute(text("""
                 INSERT INTO currency_rates (
