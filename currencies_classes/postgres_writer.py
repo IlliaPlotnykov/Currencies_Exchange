@@ -48,7 +48,7 @@ class PostgresWriter:
                     currency_name,
                     rate,
                     exchange_date
-                FROM currency_rates_tmp
+                FROM currency_rates_stg
                 ON CONFLICT (currency_code, exchange_date)
                 DO UPDATE SET
                     currency_name = EXCLUDED.currency_name,
